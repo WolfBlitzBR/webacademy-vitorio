@@ -1,0 +1,27 @@
+name: Segund Workflow
+
+on:
+  push:
+    
+jobs:
+  primeiro-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Primeiro passo"
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Mostra data
+        run: date
+
+      - name: Sistema Operacional usado pelo runner
+        run: git uname -a
+
+      - name: Versão do git
+        run: git --version
+        
+      - name: Conteudo do README.md
+        run: cat README.md
+
+      - name: Lista Arquivos
+        run: ls -la

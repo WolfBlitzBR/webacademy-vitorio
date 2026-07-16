@@ -15,7 +15,7 @@ jobs:
         run: date
 
       - name: Sistema Operacional usado pelo runner
-        run: git uname -a
+        run: uname -a
 
       - name: Versão do git
         run: git --version

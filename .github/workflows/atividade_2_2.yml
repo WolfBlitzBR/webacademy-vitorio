@@ -1,27 +1,26 @@
-name: Segund Workflow
+name: Segundo Workflow
 
 on:
   push:
-    
+
 jobs:
-  primeiro-job:
+  segundo-job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Primeiro passo"
+      - run: echo "Segundo passo"
       - name: Checkout
         uses: actions/checkout@v5
-
-      - name: Mostra data
+      - name: Lista arquivos
+        run: ls ${{ github.workspace }}
+      - name: Data e hora da execução
         run: date
-
-      - name: Sistema Operacional usado pelo runner
+      - name: Sistema operacional do runner
         run: uname -a
-
-      - name: Versão do git
+      - name: Versão do Git
         run: git --version
-        
-      - name: Conteudo do README.md
+      - name: Conteúdo do README.md
         run: cat README.md
-
-      - name: Lista Arquivos
-        run: ls -la
+      - name: Lista arquivos novamente
+        run: ls ${{ github.workspace }}
+      - name: Status
+        run: echo "Status ${{ job.status }}."

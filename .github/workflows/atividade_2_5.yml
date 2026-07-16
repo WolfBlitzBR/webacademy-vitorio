@@ -1,55 +1,49 @@
-# .github/workflows/atividade_2_4.yml
-name: Quarto Workflow
+name: Quinto Workflow
 
 on:
   push:
 
 jobs:
-  primeiro-job:
-    name: Job 1
+  quinto-job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Primeiro passo"
+      - run: echo "Quinto passo"
       - name: Checkout
         uses: actions/checkout@v5
-
-      - name: Mostra data e hora
+      - name: Data e hora da execução
         run: date
-
-      - name: Versão do git
+      - name: Versão do Git
         run: git --version
-
-  validar-arquivos:
-    name: Job 2
-    needs: primeiro-job
+        
+  sexto-job:
+    needs: quinto-job
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
+      - run: echo "Sexto passo"
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Verifica README.md
+        run: |
+          if [ ! -f README.md ]; then
+            echo "ERRO: README.md não encontrado!"
+            exit 1
+          fi
+          echo "README.md OK"
 
-      - name: Validar README.md
+      - name: Verifica LICENSE
         run: |
-          if [-f README.md]; then
-            echo "Arquivo README.md encontrado."
-          else
-            echo "Arquivo README.md não encontrado."
+          if [ ! -f LICENSE ]; then
+            echo "ERRO: LICENSE não encontrado!"
             exit 1
           fi
+          echo "LICENSE OK"
 
-      - name: Validar LICENSE
+      - name: Verifica .gitignore
         run: |
-          if [-f LICENSE]; then
-            echo "Arquivo LICENSE encontrado."
-          else
-            echo "Arquivo LICENSE não encontrado."
+          if [ ! -f .gitignore ]; then
+            echo "ERRO: .gitignore não encontrado!"
             exit 1
           fi
-          
-      - name: Validar .gitignore
-        run: |
-          if [-f .gitignore]; then
-            echo "Arquivo .gitignore encontrado."
-          else
-            echo "Arquivo .gitignore não encontrado."
-            exit 1
-          fi
+          echo ".gitignore OK"
+      
+    

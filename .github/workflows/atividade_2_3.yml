@@ -1,0 +1,27 @@
+# .github/workflows/atividade_2_3.yml
+name: Terceiro Workflow
+
+on:
+  push:
+
+env:
+  CURSO: "Integração Contínua"
+
+jobs:
+  exibir-informacoes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Exibir Nome do Curso
+        run: echo "Curso de ${{ env.CURSO }}"
+
+      - name: Exibir Usuário que execultou o wrokflow
+        run: echo "Usuário responsável pela execução -> ${{ github.actor }}"
+
+      - name: Exibir Nome do Repositório
+        run: echo "Repositório atual -> ${{ github.repository }}"
+
+      - name: Exibir Branch Utilizada
+        run: echo "Branch ativa -> ${{ github.ref_name }}"

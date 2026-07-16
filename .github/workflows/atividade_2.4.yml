@@ -1,0 +1,39 @@
+# .github/workflows/atividade_2_4.yml
+name: Quarto Workflow
+
+on:
+  push:
+
+jobs:
+  validar-arquivos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Validar README.md
+        run: |
+          if [-f README.md]; then
+            echo "Arquivo README.md encontrado."
+          else
+            echo "Arquivo README.md não encontrado."
+            exit 1
+          fi
+
+      - name: Validar LICENSE
+        run: |
+          if [-f LICENSE]; then
+            echo "Arquivo LICENSE encontrado."
+          else
+            echo "Arquivo LICENSE não encontrado."
+            exit 1
+          fi
+          
+      - name: Validar .gitignore
+        run: |
+          if [-f .gitignore]; then
+            echo "Arquivo .gitignore encontrado."
+          else
+            echo "Arquivo .gitignore não encontrado."
+            exit 1
+          fi
